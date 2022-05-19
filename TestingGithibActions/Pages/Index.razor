@@ -1,0 +1,48 @@
+﻿@page "/"
+@using TestingGithubActions.Models.Entities
+
+<PageTitle>Index</PageTitle>
+
+<h1>Hello, world!</h1>
+
+@foreach (var testClass in testClass)
+{
+    <div class="row">
+        <div class="col">
+            <span>@testClass.Title</span>
+        </div>
+        <div class="col">
+            <span>@testClass.Description</span>
+        </div>
+    </div>
+    <br />
+}
+
+<SurveyPrompt Title="How is Blazor working for you?" />
+
+@code {
+    private List<TestingClass> testClass;
+
+    protected override void OnInitialized()
+    {
+        testClass = new List<TestingClass>
+        {
+            new TestingClass
+            {
+                Description = "Desc 1",
+                Title = "Title 1"
+            },
+            new TestingClass
+            {
+                Description = "Desc 2",
+                Title = "Title 2"
+            },
+            new TestingClass
+            {
+                Description = "Desc 3",
+                Title = "Title 3"
+            },
+        };
+    }
+}
+
